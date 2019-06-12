@@ -294,6 +294,7 @@ trait FillsSubAttributes
             if ($this->shouldRemoveAll) {
                 $ids = $model->{$this->viaRelationship}()->pluck('id');
             } else {
+                // bugfix
                 $ids = $model->{$this->viaRelationship}()->whereNotIn($this->viaRelationship . '.id', $this->touched)->pluck($this->viaRelationship . '.id');
             }
 
